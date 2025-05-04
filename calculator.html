@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <style>
+    body{
+    display: flex;
+    justify-content: center;
+}
+#main{
+    display: flex;
+   justify-content: center;
+   align-items: center;
+   align-content: center;
+    height: 600px;
+    width: 600px;
+    background-color: rgb(54, 51, 51);
+}
+#pmain{
+    display: block;
+    justify-content: center;
+    height: 550px;
+    width: 550px;
+    background-color: white;
+}
+#display{
+    display: flex;
+    align-items: center;
+    align-content:stretch;
+    height: 20%;
+    width: 90%;
+    background-color: black;
+    position: relative;
+    top: 2.5%;
+    right: 5%;
+    left: 5%;
+    color: white;
+}
+  #exp {
+    height: 60px;            
+    font-size: 45px;         
+    text-align: left;       
+    padding: 10px;          
+    margin-bottom: 10px;    
+    overflow-x: auto;      
+  }
+
+#button{
+    display: block;
+    height: 73%;
+    width: 95%;
+    position: relative;
+    top:  2.5%;
+    bottom: 2.5%;
+    right: 2.5% ;
+    left:  2.5%;
+    }
+    .b1{
+        padding: 1%;
+        height: 22%;
+        display: block;
+        display: flex;
+        justify-content: space-evenly;
+    }
+    .button{
+        height:100%;
+        width: 17.5%;
+        display: flex;
+        font-size: 300%;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(83, 80, 80);
+    }
+    #logo{
+        border: hidden;
+        border-radius: 50%;
+        background-image:url(mylogo.png);
+        background-size: cover;
+    }
+   </style>
+    <title>calculator</title>
+</head>
+<body>
+    <div id="main">
+        <div id="pmain">
+            <div id="display">
+                <p id="exp"></p>
+            </div>
+            <br>
+            <div id="button">
+                <div class="b1">
+                <button class="button" onclick="press(7)">7</button>
+                <button class="button" onclick="press(8)">8</button>
+                <button class="button" onclick="press(9)">9</button>
+                <button class="button" onclick="press('+')">+</button>
+            </div>
+            <div class="b1">
+                <button class="button" onclick="press(4)">4</button>
+                <button class="button" onclick="press(5)">5</button>
+                <button class="button" onclick="press(6)">6</button>
+                <button class="button" onclick="press('-')">-</button>
+            </div>
+            <div class="b1">
+                <button class="button" onclick="press(1)">1</button>
+                <button class="button" onclick="press(2)">2</button>
+                <button class="button" onclick="press(3)">3</button>
+                <button class="button" onclick="press('*')">X</button>
+            </div>
+            <div class="b1">
+                <button class="button" onclick="back()">bck</button>
+                <button class="button" onclick="press(0)">0</button>
+                <button class="button" onclick="calculate()">=</button>
+                <button class="button" onclick="press('/')">/</button>
+            </div>
+            
+            </div>
+        </div>
+    </div>
+    <script>
+        let display = document.getElementById("exp");
+let expression = "";
+
+function press(key) {
+  expression += key;
+  display.value = expression;
+ display.innerText=expression;
+}
+function back() {
+  expression = expression.slice(0, -1); // Remove last character
+  display.innerText = expression;
+}
+function calculate() {
+  try {
+    let result = eval(expression);
+    display.value = result;
+    expression = result.toString(); // allow further operations
+    display.innerText=result
+    
+  } catch (e) {
+    display.value = "Error";
+    expression = "";
+  }
+}
+    </script>
+</body>
+</html>
