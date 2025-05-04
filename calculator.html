@@ -125,14 +125,14 @@ function press(key) {
  display.innerText=expression;
 }
 function back() {
-  expression = expression.slice(0, -1); // Remove last character
+  expression = expression.slice(0, -1);
   display.innerText = expression;
 }
 function calculate() {
   try {
     let result = eval(expression);
     display.value = result;
-    expression = result.toString(); // allow further operations
+    expression = result.toString();
     display.innerText=result
     
   } catch (e) {
